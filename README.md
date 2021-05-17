@@ -1,41 +1,34 @@
-# How to increase ulimit in Linux ? 
-
-#available limit
+`# available limit
 user@ubuntu:~$ ulimit -n
 1024
 
-#To increase the available limit to say 65535
+# To increase the available limit to say 65535
 user@ubuntu:~$ sudo vim /etc/sysctl.conf
 
-#add the following line to it
+# add the following line to it
 fs.file-max = 65535
 
 sudo vim /etc/security/limits.conf
 
-#add following lines to it
-
+# add following lines to it
 * soft     nproc          65535    
-* hard     nproc          65535   
+`* hard     nproc          65535   
 * soft     nofile         65535   
-* hard     nofile         65535
+`* hard     nofile         65535
 root soft     nproc          65535    
 root hard     nproc          65535   
 root soft     nofile         65535   
 root hard     nofile         65535
 
-#edit the following file
-
+`# edit the following file
 user@ubuntu:~$ sudo vim /etc/pam.d/common-session
 
-#add this line to it
-
+`# add this line to it
 session required pam_limits.so
 
-#run this to refresh with new config
-
+# run this to refresh with new config
 user@ubuntu:~$ sudo sysctl -p
 
-#logout and login and try the following command
-
+# logout and login and try the following command
 user@ubuntu:~$ ulimit -n
-65535
+65535`
